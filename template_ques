@@ -138,3 +138,41 @@ int main()
     fun<int>(10); 
     fun<float>(10.14); 
 } 
+================================================================================================================================
+================================================================================================================================
+
+Abstract Classes:
+-----------------------
+Any class that has pure virtual function is called Abstract class. A class is Abstract when its cannot be instantiated.
+
+- Abstract classes are mainly used for Upcasting, so that its derived classes can use its interface.
+- If child class of an abstract class doesn't provide definition for a pure virtual func then it becomes abstract too. 
+- Reference and pointers of an Abstract class can be declared. 
+
+Example:   //Abstract base class
+class Base          
+{
+    public:
+    virtual void show() = 0;    // Pure Virtual Function
+};
+
+class Derived:public Base
+{
+    public:
+    void show()
+    { 
+        cout << "Implementation of Virtual Function in Derived class\n"; 
+    }
+};
+
+int main()
+{
+    Base obj;   //Compile Time Error
+    Base *b;
+    Derived d;
+    b = &d;
+    b->show();
+}
+
+
+
