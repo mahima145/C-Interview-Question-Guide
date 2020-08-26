@@ -1,0 +1,140 @@
+Templates :
+============
+Templates are blueprint of a class or function that can be easily used to create existing beahviour for diff datat types. 
+Functionality is same.
+
+
+
+======================
+Template Function:
+======================
+template <Typename T>
+T add (T a, T b)
+{
+  return (a+b);
+}
+main()
+{
+ cout<<<int>add(2,3);
+ cout<<<float>add(2.4,5.4);
+}
+
+
+==========================
+Template class:
+==========================
+template <typename T> 
+class Array { 
+private: 
+    T *ptr; 
+    int size; 
+public: 
+    Array(T arr[], int s); 
+    void print(); 
+}; 
+  
+template <typename T> 
+Array<T>::Array(T arr[], int s) { 
+    ptr = new T[s]; 
+    size = s; 
+    for(int i = 0; i < size; i++) 
+        ptr[i] = arr[i]; 
+} 
+  
+template <typename T> 
+void Array<T>::print() { 
+    for (int i = 0; i < size; i++) 
+        cout<<" "<<*(ptr + i); 
+    cout<<endl; 
+} 
+  
+int main() { 
+    int arr[5] = {1, 2, 3, 4, 5}; 
+    Array<int> a(arr, 5); 
+    a.print(); 
+    return 0; 
+} 
+
+=====================
+Template overloading:
+=====================
+- A template function overloads itself as needed. But we can explicitly overload it too.
+Overloading a function template means having different sets of function templates which differ in their parameter list.
+
+Example:
+#include <iostream>
+
+template <class X> void func(X a)
+{
+   // Function code;
+   cout <<”Inside f(X a) \n”;
+}
+
+template <class X, class Y> void func(X a, Y b) //overloading function template func()
+{
+   // Function code;
+   cout <<”Inside f(X a, Y b) \n”;
+}
+
+int main()
+{
+   func(10); // calls func(X a)
+   func(10, 20); // calls func(X a, Y b)
+   return 0;
+}
+
+Can we specify default value for template arguments?
+============================================================
+Yes, like normal parameters, we can specify default arguments to templates. The following example demonstrates the same.
+
+#include<iostream> 
+using namespace std; 
+  
+template<class T, class U = char> 
+class A  { 
+public: 
+    T x; 
+    U y; 
+    A() {   cout<<"Constructor Called"<<endl;   } 
+}; 
+  
+int main()  { 
+   A<char> a;  // This will call A<char, char>    
+   return 0; 
+} 
+
+What is the difference between function overloading and templates?
+Both function overloading and templates are examples of polymorphism feature of OOP. Function overloading is used when multiple functions do similar operations, templates are used when multiple functions do identical operations.
+
+What happens when there is static member in a template class/function?
+Each instance of a template contains its own static variable.
+
+=======================
+Template specilization:
+=======================
+
+It is possible in C++ to get a special behavior for a particular data type. This is called template specialization.
+
+#include <iostream> 
+using namespace std; 
+  
+template <class T> 
+void fun(T a) 
+{ 
+   cout << "The main template fun(): " 
+        << a << endl; 
+} 
+  
+template<> 
+void fun(int a) 
+{ 
+    cout << "Specialized Template for int type: "
+         << a << endl; 
+} 
+  
+int main() 
+{ 
+    fun<char>('a'); 
+    fun<int>(10); 
+    fun<float>(10.14); 
+} 
