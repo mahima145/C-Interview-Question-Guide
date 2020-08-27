@@ -1,6 +1,57 @@
 Inheritance Types
-Diamond Problem 
-Object Slicing 
-Function overriding/ dynamic polymorphism
+==========================
+Common inheritance used is hierarchical , multilevel. In Multiple inhertance i.e a class derived from 2 classes with further derived from same class. 
+
+Diamond Problem :
+=====================
+- In Diamond problem grandchildren class has 2 instances of granParent class are created , to avoid use virtual while inheriting. 
+
+
+Object Slicing:
+=====================
+It is a scenario when derived class object is assigned to Base class object, and additional attributes of child class are sliced off to form base class object. 
+
+example: 
+Class Base {
+int x,w;
+}
+class Derived: public Base {
+public:
+int z,w;
+}
+refer: https://www.geeksforgeeks.org/object-slicing-in-c/
+
+Function overriding/ dynamic polymorphism:
+==============================================
+-- vTable is created per class and store function pointers.This table is simply a static array that the compiler sets up at compile time.
+-- A virtual table contains one entry for each virtual function that can be called by objects of the class.
+-- Each entry in this table is simply a function pointer that points to the most-derived function accessible by that class. 
+
+VPtr is ptr to object created per instance. he compiler also adds a hidden pointer to the base class, which we will call *__vptr. *__vptr is set (automatically) when a class instance is created so that it points to the virtual table for that class.
+Unlike the *this pointer, which is actually a function parameter used by the compiler to resolve self-references, *__vptr is a real pointer.
+Consequently, it makes each class object allocated bigger by the size of one pointer. It also means that *__vptr is inherited by derived classes, which is important.
+
+Early Binding and Late Binding:
+=================================
+Binding refers to the process that is used to convert identifiers (such as variable and function names) into addresses. 
+Although binding is used for both variables and functions, in this lesson we’re going to focus on function binding.
+
+Early binding
+===================================================
+-- Most of the function calls the compiler encounters will be direct function calls. A direct function call is a statement that directly calls a function.
+-- Direct function calls can be resolved using a process known as early binding. 
+-- Early binding (also called static binding) means the compiler (or linker) is able to directly associate the identifier name
+   (such as a function or variable name) with a machine address. 
+-- Remember that all functions have a unique address. So when the compiler (or linker) encounters a function call, 
+   it replaces the function call with a machine language instruction that tells the CPU to jump to the address of the function.
+
+Late Binding
+==============================================
+In some programs, it is not possible to know which function will be called until runtime (when the program is run).
+This is known as late binding (or dynamic binding). In C++, one way to get late binding is to use function pointers. 
+To review function pointers briefly, a function pointer is a type of pointer that points to a function instead of a variable.
+The function that a function pointer points to can be called by using the function call operator (()) on the pointer.
+Calling a function via a function pointer is also known as an indirect function call.
+
 
 
