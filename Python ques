@@ -1,0 +1,11 @@
+Difference between python and C++?
+When to choose python or C++?
+Mutable Objects in python ?
+
+-- In python only Objects are there. Int , Float, string, char are Objects.
+-- Type is a func that returns Object type.
+-- In python list, set and dictionary are mutable. 
+-- Int, Float, decimal, string, bool, tuple and range are immutable. 
+
+-- Python has varied libraries that make it easy to create a required functionality. 
+-- Flask, Django 
