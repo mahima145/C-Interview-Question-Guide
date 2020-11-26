@@ -1,0 +1,29 @@
+Structure padding?
+functors? function operator overloaded in a class to store a result,. It can reduce the need for static variables. 
+class Mul {
+    int val;
+    public:
+    Mul() {}
+    Mul(int v) {
+        val =v;
+        }
+    int operator () (int vl){
+        return vl*val;
+    }
+};
+int main() {
+    Mul m (12);
+    cout<<m(2)<<endl;
+    cout<<m(3)<<endl;
+ 
+    return 0;
+}
+
+-- write atoi func - ascii to int function?
+-- bit opertors?
+-- static variable in template class and function? they behave same. For different types static varibleswill be created seperately.
+-- function pointers?
+-- Use of gcc,g++ and gdb?
+-- Difference between CMAke and MAke? Make is buidsystem that derives compiler and other build tools for your code wheread and CMake is generator of buildsystem.
+-- Concurrent and Parallel programmin?
+-- 
