@@ -1,5 +1,32 @@
-Structure padding?
-functors? function operator overloaded in a class to store a result,. It can reduce the need for static variables. 
+Structure padding? The memory is stores as segments in in order of multiple of 1, multiple of 2, multiple of 4, multiple of 8. 
+In structure in if char, int,  float is there then at 1 char will store 2-3 int will store , now 4 from store after 1 block which is 4-8.
+hence memory padding is required in structure. 
+
+What are Functors? function operator overloaded in a class to store a result,. It can reduce the need for static variables. 
+//Functor are objects treated as though they are function or function pointer. Mainly used in STL.
+//C++ use transform() in STL to add 1
+/*A functor (or function object) is a C++ class that acts like a function. 
+Functors are called using the same old function call syntax. To create a functor, we create a object that overloads the operator().*/
+class increment {
+    int x;
+    public:
+    increment(int n):x(n) {}
+    int operator() (int arr_num) const{
+        return x+arr_num;
+    }
+};
+
+int main() {
+    int arr[]={1,2,3,4,5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int to_add=5;
+    //Apply increment to all elements of arr[] and store the modified elements back in arr[]
+    transform(arr,arr+n,increment(to_add));
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+return 0;
+}
 class Mul {
     int val;
     public:
@@ -19,6 +46,48 @@ int main() {
     return 0;
 }
 
+-- Overload preincrement and postincrement operators?
+    In case of prefix and postfix operator overload symbol is same . So to differentiate between these two operator functions definitions we need to pass
+    an extra int argument in case of postfix increment operator.
+    
+    Complex {
+    int real; 
+    int imaginary;
+    public:
+    Complex(): real(0),imaginary(0) {}
+    Complex(int r,int i): real(r),imaginary(i) {}
+    friend std::ostream& operator <<(std::ostream& os, const Complex &o);
+    //prefix
+    Complex operator ++();
+    Complex operator ++(int);
+};
+std::ostream& operator<< (std::ostream &os, const Complex &o) {
+    int img = obj.imaginary <0 : -obj.imaginary:obj.imaginary;
+    os << obj.real<<(obj.imaginary <0 ? "-":"+") << "i" <<img;
+
+return os;
+}
+Complex Complex:: operator ++() {
+    ++real;
+    ++imaginary;
+    return *this;
+}
+Complex Complex:: operator ++(int) {
+    Complex c(this->real,this->imaginary);
+    real++;
+    imaginary++;
+    return c;
+}
+
+------------------
+-- Casting operators with example?
+    dynamic_cast = perform runtime casting that verifies the validity of cast. If cast cannot be made, the cast fails, and expr evaluates to null.
+     A dynamic_cast performs casts on polymorphic types and can cast a A* pointer into a B* pointer only if the object being pointed to actually is a B object.
+    static_cast = perform nonpolymorphic cast . For example it can be cast a base class pointer into derived class pointer.
+    reinterpret_cast = changes a pointer to any other type of pointer. 
+    const_cast = to explicitly override const/volatile in a cast.target type must be same as source type. This type of casting manipulates the constattribute 
+    of passed object , either to be set or removed. 
+    
 -- write atoi func - ascii to int function?
 -- bit opertors?
 -- static variable in template class and function? they behave same. For different types static varibleswill be created seperately.
