@@ -19,6 +19,7 @@ Adding Cpp questions generally asked in interviews. ✌
     - What is static and dynamic binding?
     - What if user don't want to create copy of object?
     - Constructor delegation
+    - this pointer type and usecases
     - Why use initializer list?
     
   - C++ OOPS concepts with examples:
