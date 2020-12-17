@@ -45,4 +45,4 @@ Adding Cpp questions generally asked in interviews. ✌
     - What if exception thrown in constructor/destructor?
     - Final Class
    
-  Coding Questions
+   - SOLID Principles
