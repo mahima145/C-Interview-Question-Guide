@@ -1,0 +1,153 @@
+--> class Template
+--> types of constructors
+--> assignment, copy constrcutor
+--> use of explicit keyword
+--> use of mutable in class. For const func. 
+--> static fun
+--> operator overloading, new delete operator overload. 
+--> ostream, istream operator overload
+--> postfix and prefix overload.
+--> lvalue and rvalue 
+  ** lvalue is addressable.  resides in memory, can be heap or stack but traceable ; It can;t moved.
+  ** rvalue is temporary and can be moveed. CAn not be modiffied.
+#include <iostream>
+
+using namespace std;
+
+class Base
+{
+  // mutable int x; for a const func that is not allowed to change 
+  int x;
+  
+    public:
+    static char c;
+    Base(); // Default Constructor
+    Base(int x); // Parameterised Constructor.. if declared Base(int x=0) then no need to declare default Constructor
+    Base(const Base &b); //copy Constructor
+    Base& operator = (const Base &b); // Assignment operator
+    Base operator +(const Base &ob); // operator overload
+    Base operator ++ (); //prefix
+    Base operator ++ (int); //postfix
+    void info() const; // const func makes sure no data member can be modified. To change use mutable keyword.
+    void show(); //nonstatic func
+    static void show2(); // static func
+    /* New and delete can be overloaded as global and class member fun.*/
+    void* operator new (size_t  size);
+    void operator delete(void*);
+    friend std::ostream& operator << (ostream &out,const Base &ob); //ostream operator overload
+    friend std::istream& operator >> (istream &in,Base &ob); //istream opoerator overload
+};
+char Base :: c('a');
+Base:: Base()
+{
+   // x =1;
+    cout<<"Default Constructor "<<x<<endl;
+}
+Base:: Base(int x):x(x){
+        cout<<"Parameterised Constructor also is conversion constrcutor "<<x<<endl;
+    }
+Base:: Base(const Base &b)
+{
+  cout<<"Copy Constructor "<<endl;
+   x = b.x;
+
+}
+Base& Base::operator = (const Base &b)
+{
+  cout<<"Assignment operator "<<endl;
+  if(this!= &b)
+  {
+      x = b.x; // in case of pointer delete the pointer and assign new memory from b object
+  }  
+return *this;
+}
+Base Base:: operator +(const Base &ob)
+{
+    cout<<"Operator overload "<<x<<" "<<ob.x<<endl;
+    Base o1;
+    o1.x = x+ob.x;
+    
+    return o1;
+}
+Base Base:: operator ++()
+{
+    cout<<"PreIncrement Operator overload "<<endl;
+   ++x;
+    
+    return *this;
+}
+Base Base:: operator ++(int)
+{
+    cout<<"PostIncrement Operator overload "<<endl;
+    Base o1;
+    o1.x = x++;
+    
+    return o1;
+}
+/*call the global new operator to make sure it not calls class new member fun infinitely.
+The new operator denotes a request for memory allocation on the Free Store. If sufficient memory is available, 
+new operator initializes the memory and returns the address of the newly allocated and initialized memory to the pointer variable.
+If enough memory is not present throw an exception of type std::bad_alloc. Error handling is done. 
+https://aticleworld.com/dynamic-memory-and-new-operator-c/*/
+void* Base::operator new (size_t  size){
+    cout<<"New Operator overload "<<endl;
+   void* b = ::new Base();
+   return b;
+}
+void Base::operator delete(void* p){
+     cout<<"Delete Operator overload "<<endl;
+     free(p);
+}
+void Base :: info() const{
+   // x++; x is read only; onst Base *this means info func cannot modify class members. Altuhough if mutable is used then it can compile/
+   //https://stackoverflow.com/questions/3141087/what-is-meant-with-const-at-end-of-function-declaration
+   //x++; with mutable
+    cout<<"Const func "<<x<<endl;
+}
+void Base:: show()
+{
+    //Here c is static variable been accessed in non static func. 
+    cout<<"Instance func "<<x<<" "<<c<<endl;
+}
+void Base:: show2()
+{
+    //Here x is nonstatic variable been accessed in static func. 
+    cout<<"Static func "<<c<<endl;
+}
+/*ostream and istream opertors are overloaded as friend func so there is no classname used. 
+If you use classname error : ‘std::ostream& Base::operator<<(std::ostream&, const Base&)’ must take exactly one argument.
+The error is because you've tried to define a member operator<< taking two arguments, which means it takes three arguments 
+including the implicit this parameter.The operator can only take two arguments, so that when you write a << b the two arguments are a and b. */
+std::ostream& operator << (ostream &out,const Base &ob){
+    cout<<"ostream operator "<<endl;
+    out << ob.x<<endl;
+    return out;
+}
+std::istream& operator >> (istream &in,Base &ob){
+    cout<<"istream operator "<<endl;
+    in >> ob.x;
+    return in;
+}
+int main()
+{
+    cout<<"Class and Usecases"<<endl;
+    Base b(4); 
+    Base c(3);
+    Base d(static_cast<int>(4.6));
+    Base e = b+c; // here b is current object and c is passed argument 
+    e.show();
+    Base f(7);
+    f++; // post increment
+    f.show();
+    ++f; //preincrement
+    f.show();
+    f.info();
+    cout<<Base::c<<endl;
+    Base::show2(); // static
+    cout<< f;
+    cin>>f;
+    cout<<f;
+    Base *base1 = new Base(45); // new overload operator call 
+    delete base1; // delete overload operator call
+    return 0;
+}
