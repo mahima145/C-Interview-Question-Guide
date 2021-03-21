@@ -43,7 +43,14 @@ By the default class has:
     -- public - all members are accesible outside class. 
     -- protected - only child class can access the members. 
     -- private - cannot be accessed outside class.
-    
+
+ 
+ -- Private Inheritance : Parent class public and protected members becomes private in derived;
+ -- Public Inheritance : Parent class public remains public and protected remains protected in derived;
+ -- Protected Inheritance: Parent class public and protected members becomes protected in derived;
+ 
+ ** Reference::  https://www.programiz.com/cpp-programming/public-protected-private-inheritance
+ 
  -- Friend func/class is used to access private data members of a class. 
     ex: Friend class
     class A {
