@@ -1,0 +1,103 @@
+Class
+-------------
+Class is container that holds member functions, variables and define a behaviour.
+
+By the default class has:
+------------------------
+1) Constructor, destructor, copy constructor, assignment operator.
+2) this pointer holds address of current object of class. syntax : class &=*this.
+
+-- Empty class has size 1byte because the name of class store in 1byte.
+
+-- IF user don't want copy of object then delete the default copy and assignment operators. 
+    - User (Const User&ob) = delete
+    - User& operator= (const Usre &ob)= delete
+    
+-- In constructor when object is initialized calls made as - constructor , assignment, destructor.
+
+-- Constructor delegation is done when there is some common code between two constructors of a class. So in order to optimize code one constructor can call another in initializer list.
+    Because constructor inside constructor cannot be done because it will created two instances for same obj. 
+    Ex.
+    Class A {
+    int x,y,z;
+    public:
+    A() {
+      x=0; y=0;z=0;
+    }
+    A(int z):A() // constructor delegation introduced in C++11
+    {
+    this->z=z;
+    }
+    };
+    
+    
+-- Initializer list make sure the assignment opertor is not called as it would in constrcutor body, thus it saves a function call.
+
+-- Initializer List in constrcutor is provided when either of below case occurs
+    - to initialize const data members. 
+    - to initialize reference member variables 
+    - to initialize parent class members when default constructor is not given. 
+    - to initializer parent class references. 
+    
+ -- Class specifiers:
+    -- public - all members are accesible outside class. 
+    -- protected - only child class can access the members. 
+    -- private - cannot be accessed outside class.
+    
+ -- Friend func/class is used to access private data members of a class. 
+    ex: Friend class
+    class A {
+    int a;
+    public:
+    friend class B;
+};
+class B{
+    public:
+    void printa(A ob){
+        cout<<"A class data member "<<ob.a;
+    }
+};
+
+int main()
+{
+    A a;
+    B b;
+    b.printa(a);
+    return 0;
+}
+
+-- friend func example:
+class A {
+    int a=100;
+    char ch='M';
+    public:
+    friend void print (A ob);
+};
+
+void print (A ob){
+         cout<<"A class data member thru friend func "<<ob.a <<" "<<ob.ch;
+    }
+    
+int main()
+{
+A a;
+print(a);
+    return 0;
+}
+=======================================================================================================================
+
+Dynamic and static binding:
+-----------------------------
+-- When class instance is created by default always static binding happen i.e the data for copy constructor or assignment operator is binded at compile time. 
+-- In case dynamic memory is created inside constructor in that case memory won't be created in default constructs so in case current object is deleted
+    then the copy obj or assigned obj will point to some NULL memory location (crash)
+    
+    -- In order to avoid write copy constructor and assignment operator that dynamically creates memory for data called dynamic binding. 
+
+
+******************************************************************************************************************************************
+Difference between C and C++?
+- C++ is HLL and has OOPS. 
+- C is MLL. 
+- C++ struct has enhancement. 
+- C++ access specifiers has mutable. 
