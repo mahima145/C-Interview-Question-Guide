@@ -1,6 +1,6 @@
 --> class Template
 --> types of constructors
---> assignment, copy constrcutor
+--> assignment, copy constrcutor, why use & in copy constructor and why not pointer. 
 --> use of explicit keyword
 --> use of mutable in class. For const func. 
 --> static fun
