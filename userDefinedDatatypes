@@ -1,0 +1,22 @@
+-- typedefs = creats datatype for complex user defined datatypes.
+ example typedef int(*mathfun)(int,int)..// declaring function pointer as type
+ 
+-- enums = use enums when you deal with limited set of values.
+enum class Color {red,green, blue};
+void fun(Color c) {
+switch(c) {
+case Color::red:
+cout<<"red"<<endl;
+case Color::green:
+cout<<"green"<<endl;
+case Color::blue:
+cout<<"blue"<<endl;
+}
+}
+-- union 
+main() {
+Color c = Color::red;
+fun(c);
+} 
+ouput:  red
+-- struct
