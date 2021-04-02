@@ -1,0 +1,24 @@
+How Compilation works in C++? What is Compiler, liner, loader.
+
+Source code(.cpp) --> compiler (.o) --> Linker --> .exe -->Loader --> OS (Running Exe in Memory)
+                                          ^                   ^
+                                          |                   |
+                                        Static Libraries    Dynamic Libraries 
+                                        (.lib, .a)          (.dll, .so)
+                                        
+  Compilation Process consist of 3 stages :
+  *****************************************
+  Preprocessor (processing of # inlcude directives, macros , inline funcs and replaced symbols) and gives .i file. 
+  After .i is being Compiled to created (*.s) 
+  assembly code -> Assembler (convert .s to .o) file.
+  ** Syntax , semantic erroes are fixed at this stage.
+  
+Explain memory allocation for C++ program?|
+                        
+
+Compiler Dependent :
+---------------------
+--> Inline functions
+--> order of evaluation of arguments. 
+--> C typecasting. 
+--> 
