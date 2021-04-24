@@ -1,0 +1,26 @@
+
+
+1) OOPs on tips as in theory wise and writing classes and explaning why's?
+
+2) Class Hierarchy and How Association, Aggregation and Composition is implemented with example?
+
+3) Why we pass &reference instead of value ? Expects a brief answer instead of 1 liner. 
+** reference returns a ptr which is of integer type and value return total size of object , hence references are used for reduce memory in use.
+
+4) Difference between global variable and static variable?
+
+5) Types of Exceptions and stack unwinding?
+
+6) SOLID principle and how you have designed classes using first 3 principles?
+
+7) Function pointers, example questions?
+
+8) Casting operators static, const, dynamic, reinterpret with example. Which one is used most?
+
+9) Left and Right operators? 
+
+10) Move operator and constructor?
+
+
+
+
