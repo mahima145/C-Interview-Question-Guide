@@ -1,0 +1,46 @@
+What is Big 4? Don't get confuse by the name its the name of 4 authors who have contributed to make a bool on Design Patterns. 
+
+Find More: https://www.journaldev.com/31902/gangs-of-four-gof-design-patterns
+
+Questions:
+-------------
+Which patterns you have used?
+
+Singleton Pattern implementation with thread safe implementation ? 
+question on how to Delete Singleton class instance?
+
+** Observer Pattern Design and description. 
+-> consider already a Publisher is there and now more publishers wnat to join how would you modify the design?
+
+Adapter Pattern : 
+-----------
+Usage and implememtation. 
+Strategy Pattern . 
+
+Visitor Pattern :
+-----------------
+
+Notes 
+---------
+
+
+Design Patterns: 
+---------------------
+Creational , Behavorial, Structural
+
+Creational: 
+---------------
+Singleton 
+Factory
+Abstract Factory
+Builder
+Prototype
+
+Behavorial:
+------------
+Chain of Responsibility : Delegates commands to a chain of processing objects.
+Observer : Is a publish/subscribe pattern which allows a number of observer objects to see an event.
+Strategy : Allows one of a family of algorithms to be selected on-the-fly at run-time.
+Visitor: Separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+
+
