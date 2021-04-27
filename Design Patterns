@@ -12,17 +12,6 @@ question on how to Delete Singleton class instance?
 ** Observer Pattern Design and description. 
 -> consider already a Publisher is there and now more publishers wnat to join how would you modify the design?
 
-Adapter Pattern : 
------------
-Usage and implememtation. 
-Strategy Pattern . 
-
-Visitor Pattern :
------------------
-
-Notes 
----------
-
 
 Design Patterns: 
 ---------------------
@@ -43,4 +32,10 @@ Observer : Is a publish/subscribe pattern which allows a number of observer obje
 Strategy : Allows one of a family of algorithms to be selected on-the-fly at run-time.
 Visitor: Separates an algorithm from an object structure by moving the hierarchy of methods into one object.
 
+Questions:
+--------------
+Singleton pattern - eager initialisation , synchronised, lazy initialisation, double check method. 
+** use in db connection , logger. 
+
+Read: https://iq.opengenus.org/singleton-design-pattern-in-cpp/
 
