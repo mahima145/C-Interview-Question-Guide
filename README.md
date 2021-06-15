@@ -1,6 +1,6 @@
 # cppconcepts_ques
 
-Adding Cpp questions generally asked in interviews. This is list of questions I have experienced in my interviews for Average Interviews.... :)✌
+Adding Cpp questions generally asked in interviews. This is list of questions I have experienced in my interviews for 3- 7 years of experience .... :)✌
 
 - Conceptual
 
