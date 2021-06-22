@@ -1,0 +1,44 @@
+Q: Write order of constructor and destructor
+class A {
+    public:
+    A() {
+        cout<<"A";
+    }
+    ~A() {
+        cout<<"~A";
+    }
+    
+};
+class B {
+    public:
+     B() {
+        cout<<"B";
+    }
+    ~B() {
+        cout<<"~B";
+    }
+    
+};
+class C  {
+    public:
+     C() {
+        cout<<"C";
+    }
+    ~C() {
+        cout<<"~C";
+    }
+};
+class D: public B, C , virtual A{
+    public:
+     D() {
+        cout<<"D"<<endl;
+    }
+    ~D() {
+        cout<<"~D";
+    }
+};
+int main()
+{
+    D d;
+  return 0;
+}
