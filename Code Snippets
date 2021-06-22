@@ -42,3 +42,15 @@ int main()
     D d;
   return 0;
 }
+--------
+Ques : class A {
+    public:
+    virtual void show();
+    //int a;
+    
+};
+int main()
+{
+   cout<<sizeof(A); //with int a and with out int a
+ return 0;
+}
